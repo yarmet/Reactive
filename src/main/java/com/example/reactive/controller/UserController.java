@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.security.Principal;
+
 @Slf4j
 @RestController
 @AllArgsConstructor
@@ -18,9 +20,9 @@ public class UserController {
     private final UserService userService;
 
 
-    @PostMapping("/test")
+    @PostMapping("/getPrincipal")
     public Mono<?> test(ServerWebExchange swe) {
-        return swe.getPrincipal().map(p -> "Hello " + p.getName());
+        return swe.getPrincipal().map(Principal::getName);
     }
 
 
