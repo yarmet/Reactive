@@ -1,6 +1,6 @@
 package com.example.reactive.security;
 
-import com.example.reactive.service.User;
+import com.example.reactive.repository.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

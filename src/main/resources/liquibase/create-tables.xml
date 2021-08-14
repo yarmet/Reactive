@@ -12,10 +12,10 @@
             </column>
 
             <column name="username" type="VARCHAR" remarks="Имя пользователя">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
 
-            <column name="password" type="VARCHAR" remarks="Пароль рользователя">
+            <column name="password" type="VARCHAR" remarks="Пароль пользователя">
                 <constraints nullable="false"/>
             </column>
 
@@ -23,16 +23,7 @@
                 <constraints nullable="false"/>
             </column>
 
-
         </createTable>
-
-<!--        <addPrimaryKey tableName="audit_denial_reason" columnNames="id" constraintName="pk_audit_denial_reason"/>-->
-
-<!--        <createIndex indexName="idx_audit_denial_reason_1"-->
-<!--                     tableName="audit_denial_reason"-->
-<!--                     unique="true">-->
-<!--            <column name="order_id"/>-->
-<!--        </createIndex>-->
 
     </changeSet>
 </databaseChangeLog>
