@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create-user" author="Ruslan Khamedov">
+
+        <createTable tableName="usr" remarks="таблица пользователя">
+
+            <column name="id" type="BIGINT" remarks="Уникальный идентификатор записи" autoIncrement="true">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="username" type="VARCHAR" remarks="Имя пользователя">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="password" type="VARCHAR" remarks="Пароль рользователя">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="role" type="VARCHAR" remarks="Роль">
+                <constraints nullable="false"/>
+            </column>
+
+
+        </createTable>
+
+<!--        <addPrimaryKey tableName="audit_denial_reason" columnNames="id" constraintName="pk_audit_denial_reason"/>-->
+
+<!--        <createIndex indexName="idx_audit_denial_reason_1"-->
+<!--                     tableName="audit_denial_reason"-->
+<!--                     unique="true">-->
+<!--            <column name="order_id"/>-->
+<!--        </createIndex>-->
+
+    </changeSet>
+</databaseChangeLog>
