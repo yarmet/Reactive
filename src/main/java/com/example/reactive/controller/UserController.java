@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class UserController {
 
-    private final static ResponseEntity<Object> UNAUTHORIZED = ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    private final static ResponseEntity<HttpStatus> UNAUTHORIZED = ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
     private final UserService userService;
     private final JwtUtil jwtUtil;
@@ -26,7 +26,7 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public Mono<?> login(ServerWebExchange swe) {
+    public Mono<ResponseEntity<?>> login(ServerWebExchange swe) {
         return swe.getFormData().flatMap(credentials -> {
                     String username = credentials.getFirst("username");
                     String password = credentials.getFirst("password");

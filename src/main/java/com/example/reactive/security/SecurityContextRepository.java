@@ -32,6 +32,7 @@ public class SecurityContextRepository implements ServerSecurityContextRepositor
             
             UsernamePasswordAuthenticationToken auth
                     = new UsernamePasswordAuthenticationToken(authToken, authToken);
+
             return authenticationManager
                     .authenticate(auth)
                     .map(SecurityContextImpl::new);
