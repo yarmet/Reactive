@@ -31,8 +31,7 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
             if (username == null || !claimsFromToken.getExpiration().after(new Date())) {
                 return Mono.empty();
             }
-            Claims claims = jwtUtil.getClaimsFromToken(authToken);
-            List<String> role = claims.get("role", List.class);
+            List<String> role = claimsFromToken.get("role", List.class);
 
             List<SimpleGrantedAuthority> authorities = role.stream()
                     .map(SimpleGrantedAuthority::new)
