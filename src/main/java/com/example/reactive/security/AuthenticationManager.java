@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +25,10 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
     public Mono<Authentication> authenticate(Authentication authentication) {
         String authToken = authentication.getCredentials().toString();
         try {
-            String username = jwtUtil.extractUsername(authToken);
+            Claims claimsFromToken = jwtUtil.getClaimsFromToken(authToken);
+            String username = claimsFromToken.getSubject();
 
-            if (username == null || !jwtUtil.validateToken(authToken)) {
+            if (username == null || !claimsFromToken.getExpiration().after(new Date())) {
                 return Mono.empty();
             }
             Claims claims = jwtUtil.getClaimsFromToken(authToken);
